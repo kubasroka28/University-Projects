@@ -1,0 +1,15 @@
+axiom refl  : ∀ x, x = x
+axiom subst : ∀ {P} x y, x = y → P(x) → P(y)
+
+theorem symm : ∀ x y, x = y → y = x
+proof
+  fun [x] [y] (eq : x = y) ->
+    subst {z | z = x} [x] [y] eq (refl [x])
+qed
+
+theorem trans : ∀ x y z, x = y → y = z → x = z
+proof
+  fun [x] [y] [z] (eq : x = y) ->
+    subst {a | a = z → x = z} [x] [y] eq
+      (fun (eq2 : x = z) -> eq2)
+qed

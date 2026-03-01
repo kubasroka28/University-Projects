@@ -1,0 +1,19 @@
+axiom drinker_em :
+  (forall x, drinks(x)) or (exists x, not drinks(x))
+
+theorem drinker_paradox :
+  exists x, drinks(x) -> forall y, drinks(y)
+proof
+  case drinker_em of
+  | left  everyone_drinks ->
+    (* If everyone drinks, then we can choose any person *)
+    pack [john()] (fun (j : drinks(john())) -> everyone_drinks)
+      : exists x, drinks(x) -> forall y, drinks(y)
+  | right someone_does_not_drink ->
+    (* If someone does not drink, we can choose that person *)
+    unpack [bob] bob_does_not_drink from someone_does_not_drink in
+    pack [bob] (fun (bob_drinks : drinks(bob)) ->
+      (* If we assume bob drinks, we reach a contradiction *)
+      absurd (bob_does_not_drink bob_drinks) : forall y, drinks(y))
+      : exists x, drinks(x) -> forall y, drinks(y)
+qed

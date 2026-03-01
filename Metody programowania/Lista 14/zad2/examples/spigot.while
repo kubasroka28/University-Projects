@@ -1,0 +1,31 @@
+q := 1;
+r := 0;
+t := 1;
+k := 1;
+n := 3;
+l := 3;
+
+while (true) {
+  if (4 * q + r - t < n * t) {
+    print(n);
+    qq := 10 * q;
+    rr := 10 * (r - n * t);
+    tt := t;
+    lk := k;
+    nn := ((10 * (3 * q + r)) / t) - (10 * n);
+    ll := l;
+  } else {
+    qq := q * k;
+    rr := (2 * q + r) * l;
+    tt := t * l;
+    kk := k + 1;
+    nn := (q * (7 * k + 2) + r * l) / (t * l);
+    ll := l + 2;
+  }
+  q := qq;
+  r := rr;
+  t := tt;
+  k := kk;
+  n := nn;
+  l := ll;
+}

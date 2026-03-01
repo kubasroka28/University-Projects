@@ -1,0 +1,11 @@
+(lang dune 3.14)
+
+(name zadanie2)
+
+(package
+  (name zadanie2)
+  (allow_empty)
+  (depends ocaml dune))
+
+(using menhir 2.1)
+

@@ -1,0 +1,7 @@
+theorem em_implies_dn : not p or p -> not not p -> p
+proof
+  fun (em : not p or p) (nnp : not not p) ->
+    case em of
+    | left np -> absurd (nnp np) : p
+    | right p -> p
+qed

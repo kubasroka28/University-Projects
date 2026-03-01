@@ -1,0 +1,4 @@
+(executable
+ (public_name spreadsheet)
+ (name main)
+ (libraries spreadsheet csv))

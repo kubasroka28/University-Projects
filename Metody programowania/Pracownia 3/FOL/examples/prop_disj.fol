@@ -1,0 +1,15 @@
+theorem deMorgan1 : not (p or q) -> not p and not q
+proof
+  fun (f : not (p or q)) ->
+    ( (fun (x : p) -> f (left  x : p or q))
+    , (fun (x : q) -> f (right x : p or q))
+    )
+qed
+
+theorem deMorgan2 : not p and not q -> not (p or q)
+proof
+  fun (f : not p and not q) (x : p or q) ->
+    case x of
+    | left  x -> fst f x
+    | right x -> snd f x
+qed

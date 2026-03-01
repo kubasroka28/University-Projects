@@ -1,0 +1,14 @@
+m := 162;
+k := 177;
+
+print(m * k);
+
+res := 0;
+
+while (k <> 0)
+{
+  res := res + m;
+  k := k - 1;
+}
+
+print(res);

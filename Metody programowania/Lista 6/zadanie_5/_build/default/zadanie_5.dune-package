@@ -1,0 +1,4 @@
+(lang dune 3.17)
+(name zadanie_5)
+(sections (lib .))
+(files (lib (META dune-package)))

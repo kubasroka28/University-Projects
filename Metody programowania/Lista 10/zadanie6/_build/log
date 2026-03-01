@@ -1,0 +1,17 @@
+# dune exec func test.fun
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /home/jakub_sroka/.cache/dune/db
+# Workspace root: "/mnt/c/Users/Jakub Sroka/OneDrive/Documents/Studia/letni
+# 2024-25/Metody programowania/Lista 10/zadanie6"
+# Auto-detected concurrency: 16
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/jakub_sroka/.opam/default/bin/ocamlc.opt -config > /tmp/dune_43d324_output

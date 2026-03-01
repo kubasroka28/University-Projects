@@ -1,0 +1,15 @@
+type token =
+    TIMES
+  | RPAREN
+  | POWER
+  | PLUS
+  | MINUS
+  | LPAREN
+  | LOG
+  | FLOAT of float
+  | EOF
+  | DIV
+val menhir_begin_marker : int
+val xv_main : Zadanie_6_ast.expr
+val xv_expr : Zadanie_6_ast.expr
+val menhir_end_marker : int

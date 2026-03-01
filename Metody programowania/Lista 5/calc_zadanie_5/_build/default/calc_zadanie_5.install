@@ -1,0 +1,4 @@
+lib: [
+  "_build/install/default/lib/calc_zadanie_5/META"
+  "_build/install/default/lib/calc_zadanie_5/dune-package"
+]

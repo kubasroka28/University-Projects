@@ -1,0 +1,45 @@
+type token =
+    UNIT
+  | TIMES
+  | THEN
+  | SND
+  | RPAREN
+  | PLUS
+  | OR
+  | NEQ
+  | MINUS
+  | LT
+  | LPAREN
+  | LET
+  | LEQ
+  | KW_UNIT
+  | KW_INT
+  | KW_BOOL
+  | INT of int
+  | IN
+  | IF
+  | IDENT of string
+  | GT
+  | GEQ
+  | FUNREC
+  | FUN
+  | FST
+  | EQ
+  | EOF
+  | ELSE
+  | DIV
+  | COMMA
+  | COLON
+  | BOOL of bool
+  | ARR
+  | AND
+val node : Lexing.position * Lexing.position -> 'a -> 'a RawAst.node
+val menhir_begin_marker : int
+val xv_type_simpl : RawAst.typ
+val xv_type_expr : RawAst.typ
+val xv_mexpr : RawAst.expr
+val xv_main : RawAst.expr
+val xv_expr : RawAst.expr
+val xv_base_expr : RawAst.expr_data RawAst.node
+val xv_app_expr : RawAst.expr
+val menhir_end_marker : int

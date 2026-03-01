@@ -1,0 +1,7 @@
+lib: [
+  "_build/install/default/lib/spreadsheet/META"
+  "_build/install/default/lib/spreadsheet/dune-package"
+]
+bin: [
+  "_build/install/default/bin/spreadsheet"
+]

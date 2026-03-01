@@ -1,0 +1,7 @@
+a := 1;
+if (true) {
+    print (a);
+    local a = 20;
+    print (a);
+}
+print (a);

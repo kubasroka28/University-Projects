@@ -1,0 +1,7 @@
+lib: [
+  "_build/install/default/lib/while/META"
+  "_build/install/default/lib/while/dune-package"
+]
+bin: [
+  "_build/install/default/bin/while"
+]

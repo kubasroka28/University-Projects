@@ -1,0 +1,11 @@
+theorem curry : (p and q -> r) -> p -> q -> r
+proof
+  fun (f : p and q -> r) (x : p) (y : q) ->
+    f (x, y)
+qed
+
+theorem uncurry : (p -> q -> r) -> p and q -> r
+proof
+  fun (f : p -> q -> r) (p : p and q) ->
+    f (fst p) (snd p)
+qed

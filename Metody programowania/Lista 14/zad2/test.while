@@ -1,0 +1,19 @@
+a := 1;
+if (true) {
+    print (a);
+    local a = 20;
+    if (true) {
+        print (a);
+        local a = 400;
+        print (a);
+
+        x := 3;
+    }
+    local x = 60;
+    print (x);
+    print (a);
+}
+print (a);
+
+print (x);
+

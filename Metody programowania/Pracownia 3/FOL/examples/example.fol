@@ -1,0 +1,31 @@
+(* Niech R będzie relacją, która symetryczna i~przechodnia. *)
+axiom symm  : forall x y, R(x, y) -> R(y, x)
+axiom trans : forall x y z, R(x, y) -> R(y, z) -> R(x, z)
+
+(* Załóżmy, że element 0 jest w relacji (po lewej, lub po prawej)
+  z~każdym innym elementem *)
+axiom rel0 : forall x, R(0, x) or R(x, 0)
+
+(* Wówczas, z symetryczności, 0 jest w relacji po lewej
+  oraz po prawej z każdym innym elementem. *)
+theorem rel0_l : forall x, R(0, x)
+proof
+  fun [x] ->
+    case rel0 [x] of
+    | left  H -> H
+    | right H -> symm [x] [0] H
+qed
+
+theorem rel0_r : forall x, R(x, 0)
+proof
+  fun [x] ->
+    case rel0 [x] of
+    | left  H -> symm [0] [x] H
+    | right H -> H
+qed
+
+(* A zatem relacja jest zwrotna. *)
+theorem refl : forall x, R(x, x)
+proof
+  fun [x] -> trans [x] [0] [x] (rel0_r [x]) (rel0_l [x])
+qed

@@ -1,0 +1,4 @@
+(lang dune 3.19)
+(name while)
+(sections (lib .) (bin ../../bin))
+(files (lib (META dune-package)) (bin (while)))

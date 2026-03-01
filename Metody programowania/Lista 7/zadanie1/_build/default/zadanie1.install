@@ -1,0 +1,4 @@
+lib: [
+  "_build/install/default/lib/zadanie1/META"
+  "_build/install/default/lib/zadanie1/dune-package"
+]

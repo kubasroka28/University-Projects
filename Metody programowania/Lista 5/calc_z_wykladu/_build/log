@@ -1,0 +1,55 @@
+# dune build
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /home/jakub_sroka/.cache/dune/db
+# Workspace root: "/mnt/c/Users/Jakub Sroka/OneDrive/Documents/Studia/letni
+# 2024-25/Metody programowania/Lista 5/calc_z_wykladu"
+# Auto-detected concurrency: 16
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/jakub_sroka/.opam/default/bin/ocamlc.opt -config > /tmp/dune_7ba64a_output
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamllex -q -o src/lexer.ml src/lexer.mll)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I src/.calc.objs/byte -no-alias-deps -opaque -o src/.calc.objs/byte/calc.cmo -c -impl src/calc.ml-gen)
+$ (cd _build/.sandbox/7ac0709208e805e2662300a910577b89/default && /home/jakub_sroka/.opam/default/bin/menhir src/parser.mly --base src/parser --infer-write-query src/parser__mock.ml.mock)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamldep.opt -modules -impl src/ast.ml) > _build/default/src/.calc.objs/calc__Ast.impl.d
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamldep.opt -modules -impl src/lexer.ml) > _build/default/src/.calc.objs/calc__Lexer.impl.d
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamldep.opt -modules -impl src/main.ml) > _build/default/src/.calc.objs/calc__Main.impl.d
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I src/.calc.objs/byte -I src/.calc.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o src/.calc.objs/native/calc.cmx -c -impl src/calc.ml-gen)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamldep.opt -modules -impl src/parser__mock.ml.mock) > _build/default/src/.calc.objs/parser__mock.impl.d
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.calc.objs/byte -no-alias-deps -opaque -open Calc -o src/.calc.objs/byte/calc__Ast.cmo -c -impl src/ast.ml)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.calc.objs/byte -I src/.calc.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Calc -o src/.calc.objs/native/calc__Ast.cmx -c -impl src/ast.ml)
+$ (cd _build/.sandbox/2ec288e6ce8d8e4743db1adb636de521/default && /home/jakub_sroka/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.calc.objs/byte -open Calc -short-paths -i -impl src/parser__mock.ml.mock) > _build/.sandbox/2ec288e6ce8d8e4743db1adb636de521/default/src/parser__mock.mli.inferred
+$ (cd _build/.sandbox/99584ebecff300e65c37b02ef5a47154/default && /home/jakub_sroka/.opam/default/bin/menhir src/parser.mly --base src/parser --infer-read-reply src/parser__mock.mli.inferred)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamldep.opt -modules -intf src/parser.mli) > _build/default/src/.calc.objs/calc__Parser.intf.d
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamldep.opt -modules -impl src/parser.ml) > _build/default/src/.calc.objs/calc__Parser.impl.d
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.calc.objs/byte -no-alias-deps -opaque -open Calc -o src/.calc.objs/byte/calc__Parser.cmi -c -intf src/parser.mli)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.calc.objs/byte -no-alias-deps -opaque -open Calc -o src/.calc.objs/byte/calc__Lexer.cmo -c -impl src/lexer.ml)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.calc.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Calc -o src/.calc.objs/byte/calc__Parser.cmo -c -impl src/parser.ml)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.calc.objs/byte -I src/.calc.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Calc -o src/.calc.objs/native/calc__Parser.cmx -c -impl src/parser.ml)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.calc.objs/byte -I src/.calc.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Calc -o src/.calc.objs/native/calc__Lexer.cmx -c -impl src/lexer.ml)
+$ (cd _build/default && /home/jakub_sroka/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.calc.objs/byte -no-alias-deps -opaque -open Calc -o src/.calc.objs/byte/calc__Main.cmo -c -impl src/main.ml)
+> File "src/main.ml", lines 7-11, characters 4-20:
+>  7 | ....match op with
+>  8 |     | Add -> v1 + v2
+>  9 |     | Sub -> v1 - v2
+> 10 |     | Mult -> v1 * v2
+> 11 |     | Div -> v1 / v2
+> Error (warning 8 [partial-match]): this pattern-matching is not exhaustive.
+> Here is an example of a case that is not matched:
+> (And|Or|Eq|Leq)
+>
+> File "src/main.ml", lines 14-16, characters 4-58:
+> 14 | ....match e with
+> 15 |     | Int i -> i
+> 16 |     | Binop (op, e1, e2) -> eval_op op (eval e1) (eval e2)
+> Error (warning 8 [partial-match]): this pattern-matching is not exhaustive.
+> Here is an example of a case that is not matched:
+> Bool _
+[2]

@@ -1,0 +1,15 @@
+lemma id : p -> p
+proof
+  fun (x : p) -> x
+qed
+
+lemma k : p -> q -> p
+proof
+  fun (x : p) (y : q) -> x
+qed
+
+lemma s : (p -> q -> r) -> (p -> q) -> p -> r
+proof
+  fun (f : p -> q -> r) (g : p -> q) (x : p) ->
+    f x (g x)
+qed

@@ -1,0 +1,89 @@
+type token =
+    UNPACK
+  | TIMES
+  | THEOREM
+  | SND
+  | SBR_OPN
+  | SBR_CLS
+  | RIGHT
+  | QED
+  | PROOF
+  | PLUS
+  | PACK
+  | OR
+  | OF
+  | NUM of int
+  | NOT
+  | NEQ
+  | MINUS
+  | LT
+  | LET
+  | LEQ
+  | LEFT
+  | IN
+  | IDENT of string
+  | GT
+  | GEQ
+  | FUN
+  | FST
+  | FROM
+  | FORALL
+  | FALSE
+  | EXISTS
+  | EQ
+  | EOF
+  | DIV
+  | COMMA
+  | COLON
+  | CBR_OPN
+  | CBR_CLS
+  | CASE
+  | BR_OPN
+  | BR_CLS
+  | BAR
+  | AXIOM
+  | ARR
+  | AND
+  | ABSURD
+val node : Syntax.position -> Syntax.expr_data -> Syntax.expr
+val mk_num : int -> Syntax.term
+val mk_not : Syntax.formula -> Syntax.formula
+val mk_forall :
+  (string, string) Either.t list -> Syntax.formula -> Syntax.formula
+val mk_exists : string list -> Syntax.formula -> Syntax.formula
+val mk_fun :
+  ?pos:Syntax.position ->
+  ((Lexing.position * 'a) * (string, string * Syntax.formula) Either.t) list ->
+  Syntax.expr -> Syntax.expr
+val formula_of_term : Syntax.term -> Syntax.formula
+val menhir_begin_marker : int
+val xv_term : Syntax.term
+val xv_separated_nonempty_list_COMMA_term_ : Syntax.term list
+val xv_separated_list_COMMA_term_ : Syntax.term list
+val xv_proof : Syntax.expr
+val xv_option_BAR_ : unit option
+val xv_nonempty_list_fun_arg_ :
+  ((Lexing.position * Lexing.position) *
+   (string, string * Syntax.formula) Either.t)
+  list
+val xv_nonempty_list_forall_arg_ : (string, string) Either.t list
+val xv_nonempty_list_IDENT_ : string list
+val xv_non_term_formula : Syntax.formula
+val xv_mult_op : string
+val xv_main : Syntax.def list
+val xv_loption_separated_nonempty_list_COMMA_term__ : Syntax.term list
+val xv_list_def_ : Syntax.def list
+val xv_fun_arg :
+  (Lexing.position * Lexing.position) *
+  (string, string * Syntax.formula) Either.t
+val xv_formula : Syntax.formula
+val xv_forall_arg : (string, string) Either.t
+val xv_expr_simple : Syntax.expr
+val xv_expr_pair : Syntax.expr
+val xv_expr_app : Syntax.expr
+val xv_expr_annot : Syntax.expr
+val xv_expr : Syntax.expr
+val xv_def : Syntax.def
+val xv_cmp_op : string
+val xv_add_op : string
+val menhir_end_marker : int

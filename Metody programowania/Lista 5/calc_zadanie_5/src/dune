@@ -1,0 +1,6 @@
+(library
+  (name calc_zadanie_5))
+
+(menhir (modules zadanie_5_parser))
+
+(ocamllex zadanie_5_lexer)

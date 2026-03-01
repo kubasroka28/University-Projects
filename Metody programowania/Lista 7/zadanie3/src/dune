@@ -1,0 +1,6 @@
+(library
+  (name zadanie3))
+
+(menhir (modules parser))
+
+(ocamllex lexer)

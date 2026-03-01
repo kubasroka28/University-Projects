@@ -1,0 +1,119 @@
+(* Equality axioms *)
+axiom refl  : ∀ x, x = x
+axiom subst : ∀ {P} x y, x = y → P(x) → P(y)
+
+(* Arithmetic axioms *)
+axiom plus_z : ∀ n, 0 + n = n
+axiom plus_s : ∀ n m, s(n) + m = s(n + m)
+axiom mult_z : ∀ n, 0 * n = 0
+axiom mult_s : ∀ n m, s(n) * m = m + n * m
+
+axiom induction : ∀ {P}, P(0) → (∀ n, P(n) → P(s(n))) → ∀ n, P(n)
+
+(* Theorems about equality *)
+theorem symm : ∀ x y, x = y → y = x
+proof
+  fun [x] [y] (eq : x = y) ->
+    subst {z | z = x} [x] [y] eq (refl [x])
+qed
+
+theorem trans : ∀ x y z, x = y → y = z → x = z
+proof
+  fun [x] [y] [z] (eq : x = y) ->
+    subst {a | a = z → x = z} [x] [y] eq
+      (fun (eq2 : x = z) -> eq2)
+qed
+
+theorem trans3 : ∀ x1 x2 x3 x4, x1 = x2 → x2 = x3 → x3 = x4 → x1 = x4
+proof
+  fun [x1] [x2] [x3] [x4] (eq1 : x1 = x2) (eq2 : x2 = x3) (eq3 : x3 = x4) ->
+    trans [x1] [x2] [x4] eq1
+      (trans [x2] [x3] [x4] eq2 eq3)
+qed
+
+theorem trans4 : ∀ x1 x2 x3 x4 x5,
+  x1 = x2 → x2 = x3 → x3 = x4 → x4 = x5 → x1 = x5
+proof
+  fun [x1] [x2] [x3] [x4] [x5]
+      (eq1 : x1 = x2) (eq2 : x2 = x3) (eq3 : x3 = x4) (eq4 : x4 = x5) ->
+    trans [x1] [x2] [x5] eq1
+      (trans3 [x2] [x3] [x4] [x5] eq2 eq3 eq4)
+qed
+
+(* Theorems about successor *)
+theorem s_eq : ∀ n m, n = m → s(n) = s(m)
+proof
+  fun [n] [m] (eq : n = m) ->
+    subst {k | s(n) = s(k)} [n] [m] eq (refl [s(n)])
+qed
+
+(* Theorems about addition *)
+theorem plus_eq1 : ∀ n m k, n = m → n + k = m + k
+proof
+  fun [n] [m] [k] (eq : n = m) ->
+    subst {p | n + k = p + k} [n] [m] eq (refl [n + k])
+qed
+
+theorem plus_z_r : ∀ n, n + 0 = n
+proof
+  induction {n | n + 0 = n}
+    (plus_z [0])
+    (fun [n] (IH : n + 0 = n) ->
+      trans [s(n) + 0] [s(n + 0)] [s(n)]
+        (plus_s [n] [0])
+        (s_eq [n + 0] [n] IH))
+qed
+
+theorem plus_s_r : ∀ n m, n + s(m) = s(n + m)
+proof
+  fun [n] [m] ->
+    induction {n | n + s(m) = s(n + m)}
+      (trans [0 + s(m)] [s(m)] [s(0 + m)]
+        (plus_z [s(m)])
+        (s_eq [m] [0 + m]
+          (symm [0 + m] [m] (plus_z [m]))))
+      (fun [k] (IH : k + s(m) = s(k + m)) ->
+        trans [s(k) + s(m)] [s(k + s(m))] [s(s(k) + m)]
+          (plus_s [k] [s(m)])
+          (s_eq [k + s(m)] [s(k) + m]
+            (trans [k + s(m)] [s(k + m)] [s(k) + m]
+              IH
+              (symm [s(k) + m] [s(k + m)] (plus_s [k] [m])))))
+      [n]
+qed
+
+theorem plus_comm : ∀ n m, n + m = m + n
+proof
+  induction {n | ∀ m, n + m = m + n}
+    (fun [m] ->
+      trans [0 + m] [m] [m + 0]
+        (plus_z [m])
+        (symm [m + 0] [m] (plus_z_r [m])))
+    (fun [n] (IH : ∀ m, n + m = m + n) [m] ->
+      trans3 [s(n) + m] [s(n + m)] [s(m + n)] [m + s(n)]
+        (plus_s [n] [m])
+        (s_eq [n + m] [m + n] (IH [m]))
+        (symm [m + s(n)] [s(m + n)] (plus_s_r [m] [n])))
+qed
+
+theorem plus_assoc : ∀ n m k, n + (m + k) = (n + m) + k
+proof
+  induction {n | ∀ m k, n + (m + k) = (n + m) + k}
+    (fun [m] [k] ->
+      trans [0 + (m + k)] [m + k] [(0 + m) + k]
+        (plus_z [m + k])
+        (plus_eq1 [m] [0 + m] [k]
+          (symm [0 + m] [m] (plus_z [m]))))
+    (fun [n] (IH : ∀ m k, n + (m + k) = (n + m) + k) [m] [k] ->
+      trans4
+        [s(n) + (m + k)]
+        [s(n + (m + k))]
+        [s((n + m) + k)]
+        [s(n + m) + k]
+        [(s(n) + m) + k]
+        (plus_s [n] [m + k])
+        (s_eq [n + (m + k)] [(n + m) + k] (IH [m] [k]))
+        (symm [s(n + m) + k] [s((n + m) + k)] (plus_s [n + m] [k]))
+        (plus_eq1 [s(n + m)] [s(n) + m] [k]
+          (symm [s(n) + m] [s(n + m)] (plus_s [n] [m]))))
+qed

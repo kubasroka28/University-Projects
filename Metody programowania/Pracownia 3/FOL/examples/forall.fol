@@ -1,0 +1,13 @@
+theorem thm1 :
+  (forall x y, R(x, y) -> R(y, x)) ->
+  (forall x y z, R(x, y) -> R(y, z) -> R(x, z)) ->
+  (forall x y, R(x, y) -> R(x, x))
+proof
+  fun
+    (symm  : forall x y, R(x, y) -> R(y, x))
+    (trans : forall x y z, R(x, y) -> R(y, z) -> R(x, z))
+    [x] [y] (Hxy : R(x, y))
+  ->
+    let Hyx = symm [x] [y] Hxy in
+    trans [x] [y] [x] Hxy Hyx
+qed

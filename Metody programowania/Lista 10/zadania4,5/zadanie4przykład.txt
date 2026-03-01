@@ -1,0 +1,1 @@
+eval [] (compileRPN "2 + x") (I.M.add "x" (VInt 5) I.M.empty);;

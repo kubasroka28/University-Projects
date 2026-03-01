@@ -1,0 +1,16 @@
+type token =
+    TOP
+  | RPAREN
+  | NOT
+  | LPAREN
+  | IDENT of string
+  | FORALL
+  | EXISTS
+  | EOF
+  | DISJ
+  | CONJ
+  | BOT
+val menhir_begin_marker : int
+val xv_qbf : Ast.qbf
+val xv_main : Ast.qbf
+val menhir_end_marker : int

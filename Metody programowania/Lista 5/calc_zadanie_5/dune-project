@@ -1,0 +1,10 @@
+(lang dune 3.14)
+
+(name calc_zadanie_5)
+
+(package
+  (name calc_zadanie_5)
+  (allow_empty)
+  (depends ocaml dune))
+
+(using menhir 2.1)
